@@ -6,11 +6,11 @@ import threading
 # example:
 # ticks_per_revolution = 600
 # e = Encoder(ticks_per_revolution) 
-# print(e.revs())
-# print(e.ticks)
+# print(e.getRevs())
+# print(e.getTicks())
 # or 
 # e = Encoder()
-# print(e.ticks)
+# print(e.getTicks())
 class Encoder:
   def __init__(self, ticks_per_rev = 1):
     self.ticks_per_rev = ticks_per_rev
