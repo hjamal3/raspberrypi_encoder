@@ -31,8 +31,11 @@ class Encoder:
           if isinstance(event, evdev.events.RelEvent):
             self.ticks = self.ticks + event.event.value
 
-  def revs(self):
+  def getRevs(self):
     return self.ticks/self.ticks_per_rev
+
+  def getTicks(self):
+    return self.ticks
 
   def __del__(self):
     # body of destructor
