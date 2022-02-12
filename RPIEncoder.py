@@ -22,7 +22,7 @@ class Encoder:
     devices = [evdev.InputDevice(fn) for fn in evdev.list_devices()]
     devices = {dev.fd: dev for dev in devices}
     self.ticks = 0
-    print("Value: {0}".format(self.ticks))
+    print("Encoder started.")
     while True:
       r, w, x = select.select(devices, [], [])
       for fd in r:
