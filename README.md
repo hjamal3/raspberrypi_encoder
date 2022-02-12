@@ -8,6 +8,5 @@ To use in your code:
 import RPIEncoder  
 ticks_per_revolution = 600  
 encoder = RPIEncoder.Encoder(ticks_per_revolution) # or RPIEncoder.Encoder()    
-## now encoder running in the background  
-d = encoder.depth() # depth  
-t = encoder.ticks() # ticks/pulses  
+d = encoder.depth() # get depth  
+t = encoder.ticks() # get ticks/pulses  
