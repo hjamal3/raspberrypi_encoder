@@ -11,7 +11,7 @@ To use in your code:
 import RPIEncoder  
 ticks_per_revolution = 600  
 encoder = RPIEncoder.Encoder(ticks_per_revolution) # or RPIEncoder.Encoder() defaults to ticks_per_revolution = 1
-t = encoder.ticks # get ticks/pulses
-d = encoder.revs() # get revolutions (optional)
+t = encoder.getTicks() # get ticks/pulses
+d = encoder.getRevs() # get revolutions (optional)
 
 ```
