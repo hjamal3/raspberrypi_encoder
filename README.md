@@ -10,4 +10,4 @@ import RPIEncoder
 ticks_per_revolution = 600  
 encoder = RPIEncoder.Encoder(ticks_per_revolution) # or RPIEncoder.Encoder()    
 d = encoder.depth() # get depth  
-t = encoder.ticks() # get ticks/pulses  
+t = encoder.ticks # get ticks/pulses  
