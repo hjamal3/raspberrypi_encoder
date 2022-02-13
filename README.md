@@ -6,7 +6,12 @@ dtoverlay=rotary_encoder,pin_a=5,pin_b=6,relative_axis=1
 ```
 where pin_a is the Channel A, pin_b is your Channel B of your encoder.
 
-To use in your code:  
+To use in your code, first install evdev for Python:
+```
+pip install evdev
+```
+Then in your code:
+
 ```
 import RPIEncoder  
 ticks_per_revolution = 600  
