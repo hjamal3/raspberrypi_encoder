@@ -14,7 +14,7 @@ Then in your code:
 
 ```
 import RPIEncoder  
-pin_A=5
+pin_A = 5
 ticks_per_revolution = 600  
 encoder = RPIEncoder.Encoder(pin_A,ticks_per_revolution)
 ticks = encoder.getTicks() # get ticks/pulses
@@ -25,7 +25,7 @@ For a timestamped version:
 ```
 import RPIEncoder  
 start_time = 0.0
-pin_A=5
+pin_A = 5
 ticks_per_revolution = 600  
 encoder = RPIEncoder.EncoderStamped(pin_A, ticks_per_revolution, start_time) # or encoder = RPIEncoder.EncoderStamped(pin_A, ticks_per_revolution)
 (t, ticks) = encoder.getTicksStamped() # get ticks/pulses
