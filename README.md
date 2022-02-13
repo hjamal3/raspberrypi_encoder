@@ -21,10 +21,10 @@ ticks = encoder.getTicks() # get ticks/pulses
 revs = encoder.getRevs() # get revolutions (optional)
 ```
 
-For a timestamped version, there are two possibilities, each useful in some cases:
+For a timestamped version, there are two possibilities, each useful in different scenarios:
   
-First case -> (time function called, current ticks) = getTicksStamped()  
-Second case -> (time last encoder event, current ticks) = getTicksStampedAtEvent(), this corresponds to the actual moment the encoder event happened in hardware rather than the time the function is called. 
+First case -> (time function called, current ticks) = encoder.getTicksStamped()  
+Second case -> (time last encoder event, current ticks) = encoder.getTicksStampedAtEvent(), this corresponds to the actual moment the encoder event happened in hardware rather than the time the function is called. 
 Similar for revolutions.  
 
 ```
