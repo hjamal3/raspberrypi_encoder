@@ -14,9 +14,19 @@ Then in your code:
 
 ```
 import RPIEncoder  
+pin_A=5
 ticks_per_revolution = 600  
-encoder = RPIEncoder.Encoder(ticks_per_revolution) # or RPIEncoder.Encoder() defaults to ticks_per_revolution = 1
-t = encoder.getTicks() # get ticks/pulses
-d = encoder.getRevs() # get revolutions (optional)
+encoder = RPIEncoder.Encoder(pin_A,ticks_per_revolution) # or RPIEncoder.Encoder() defaults to ticks_per_revolution = 1
+ticks = encoder.getTicks() # get ticks/pulses
+revs = encoder.getRevs() # get revolutions (optional)
+```
 
+For a timestamped version:
+```
+import RPIEncoder  
+pin_A=5
+ticks_per_revolution = 600  
+encoder = RPIEncoder.EncoderStamped(pin_A, ticks_per_revolution) # or RPIEncoder.Encoder() defaults to ticks_per_revolution = 1
+(t, ticks) = encoder.getTicksStamped() # get ticks/pulses
+(t, revs) = encoder.getRevs() # get revolutions (optional)
 ```
