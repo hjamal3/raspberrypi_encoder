@@ -51,9 +51,12 @@ class Encoder:
 # (t, ticks) = e.getTicksStamped()
 # (t_latest_tick, ticks) = e.getTicksStampedAtEvent()
 class EncoderStamped:
+
+  ticks = 0
+  mutex = threading.Lock()
+
   def __init__(self, pin_a, ticks_per_rev = 1, start_offset=0):
     self.ticks_per_rev = ticks_per_rev
-    self.ticks = 0
     self.start_time = start_offset # offset from 0 seconds
     
     self.start = timer() # used to measure time to getter
@@ -67,11 +70,12 @@ class EncoderStamped:
 
   def exec(self):
     print("EncoderStamped started.")
-    self.ticks = 0
     for event in self.device.read_loop():
         if event.type == evdev.ecodes.EV_REL:
+            self.mutex.acquire()
             self.ticks = self.ticks + event.value
             self.event_time = event.timestamp()
+            self.mutex.release()
 
   def getRevs(self):
     return self.ticks/self.ticks_per_rev
@@ -89,11 +93,17 @@ class EncoderStamped:
 
   # returns time in seconds from constructor till last event (interrupt) and total revolutions 
   def getRevsStampedAtEvent(self):
-    return (self.start_time+(self.event_time-self.start_epoch), self.ticks/self.ticks_per_rev)
+    self.mutex.acquire()
+    out = (self.start_time+(self.event_time-self.start_epoch), self.ticks/self.ticks_per_rev)
+    self.mutex.release()
+    return out
 
   # returns time in seconds from constructor till last event (interrupt) and total ticks 
   def getTicksStampedAtEvent(self):
-    return (self.start_time+timer()+(self.event_time-self.start_epoch), self.ticks)
+    self.mutex.acquire()
+    out = (self.start_time+timer()+(self.event_time-self.start_epoch), self.ticks)
+    self.mutex.release()
+    return out
 
   def __del__(self):
     # body of destructor
