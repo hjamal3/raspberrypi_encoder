@@ -1,5 +1,5 @@
 # raspberrypi_encoder
-Using rotary encoders for Raspberry Pi via dtoverlay. This Python program creates a thread which runs the encoder code in the background once you create the Encoder object! Tested on Raspbian and Ubuntu 20.04 
+Using rotary encoders for Raspberry Pi via dtoverlay. This Python program creates a thread which runs the encoder code in the background once you create the Encoder object! Tested on Raspbian and Ubuntu 20.04.  
 On Raspbian the following to the bottom of /boot/config.txt:  
 ```
 dtoverlay = rotary_encoder, pin_a=5, pin_b=6, relative_axis=1   
